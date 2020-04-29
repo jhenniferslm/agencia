@@ -22,7 +22,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Agencia implements Serializable {
-	
+
 	private static final long SerialVersiounUID = 1L;
 
 	@Id
@@ -30,27 +30,28 @@ public class Agencia implements Serializable {
 	@SequenceGenerator(name = "id_Sequence", sequenceName = "SQ_Agencia", allocationSize = 1)
 	@Column(name = "ID", unique = true, nullable = false)
 	private int id;
-	
-	
+
 	@Column(name = "NOME", nullable = false)
 	private String nome;
-	
-	
+
 	@Column(name = "DESTINO", nullable = false)
 	private String destino;
-	
-	
+
 	@Column(name = "DATA", nullable = false)
 	private LocalDateTime data;
-	
-	/*@OneToMany
-	private List<Passagem> passagens;*/
+
+	@OneToMany
+	private List<Passagem> passagens;
 
 	public Agencia() {
-		
-	
-			
-		}
+	}
+
+	public Agencia(Integer id, String nome, String destino, LocalDateTime data) {
+		this.id = id;
+		this.nome = nome;
+		this.destino = destino;
+		this.data = data;
 
 	}
 
+}

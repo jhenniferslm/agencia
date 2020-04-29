@@ -4,56 +4,42 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @Entity
 @AllArgsConstructor
+@Data
 public class Passagem {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name = "id_agencia", nullable = false)
 	private String id_agencia;
-	
+
 	@Column(name = "id_passageiro", nullable = false)
 	private String id_passageiro;
-	
+
 	@Column(name = "data", nullable = false)
 	private LocalDateTime data;
 
-	/*@ManyToOne
-	private Agencia agencia;*/
-
-	public void getAgencia() {
+	@ManyToOne
+	private Agencia agencia;
+	
+	public Passagem() {
 		
 	}
-
-	public String getId_agencia() {
-		return id_agencia;
-	}
-
-	public void setId_agencia(String id_agencia) {
+		
+		public Passagem(Integer id, String id_agencia, String id_passageiro, LocalDateTime data) {
 		this.id_agencia = id_agencia;
-	}
-
-	public String getId_passageiro() {
-		return id_passageiro;
-	}
-
-	public void setId_passageiro(String id_passageiro) {
 		this.id_passageiro = id_passageiro;
-	}
-
-	public LocalDateTime getData() {
-		return data;
-	}
-
-	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-
 
 }
