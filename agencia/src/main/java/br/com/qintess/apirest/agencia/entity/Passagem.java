@@ -27,19 +27,14 @@ public class Passagem {
 	private String id_passageiro;
 
 	@Column(name = "data", nullable = false)
-	private LocalDateTime data;
+	private String data;
 
-	@ManyToOne
-	private Agencia agencia;
-	
+	/*
+	 * @ManyToOne private Agencia agencia;
+	 */
+
 	public Passagem() {
-		
-	}
-		
-		public Passagem(Integer id, String id_agencia, String id_passageiro, LocalDateTime data) {
-		this.id_agencia = id_agencia;
-		this.id_passageiro = id_passageiro;
-		this.data = data;
+
 	}
 
 }

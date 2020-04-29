@@ -26,9 +26,8 @@ public class Agencia implements Serializable {
 	private static final long SerialVersiounUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_sequence")
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "SQ_Agencia", allocationSize = 1)
-	@Column(name = "ID", unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private int id;
 
 	@Column(name = "NOME", nullable = false)
@@ -38,20 +37,24 @@ public class Agencia implements Serializable {
 	private String destino;
 
 	@Column(name = "DATA", nullable = false)
-	private LocalDateTime data;
+	private String data;
 
-	@OneToMany
-	private List<Passagem> passagens;
+	@Column(name = "ValorPassagem", nullable = false)
+	private double valorPassagem;
+
+	/*
+	 * @OneToMany private List<Passagem> passagens;
+	 */
 
 	public Agencia() {
 	}
 
-	public Agencia(Integer id, String nome, String destino, LocalDateTime data) {
-		this.id = id;
-		this.nome = nome;
-		this.destino = destino;
-		this.data = data;
+	public void setValorPassagem(double valorPassagem) {
+		if (getDestino().equals("BaixadaSantista")) {
+			this.valorPassagem = valorPassagem-(0.2 * valorPassagem);
+		} else {
+			this.valorPassagem = valorPassagem;
+		}
 
 	}
-
 }
