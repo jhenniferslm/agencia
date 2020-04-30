@@ -29,9 +29,10 @@ public class Passagem {
 	@Column(name = "data", nullable = false)
 	private String data;
 
-	/*
-	 * @ManyToOne private Agencia agencia;
-	 */
+	
+	 @ManyToOne 
+	 private Agencia agencia;
+	 
 
 	public Passagem() {
 

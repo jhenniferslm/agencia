@@ -1,11 +1,9 @@
 package br.com.qintess.apirest.agencia.dto;
 
+import br.com.qintess.apirest.agencia.entity.Agencia;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+
 @Data
 public class PassagemDto {
 
@@ -14,5 +12,7 @@ public class PassagemDto {
 	private String id_passageiro;
 
 	private String data;
+	
+	private Agencia agencia;
 
 }

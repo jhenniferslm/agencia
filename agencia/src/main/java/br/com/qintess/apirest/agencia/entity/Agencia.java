@@ -42,9 +42,10 @@ public class Agencia implements Serializable {
 	@Column(name = "ValorPassagem", nullable = false)
 	private double valorPassagem;
 
-	/*
-	 * @OneToMany private List<Passagem> passagens;
-	 */
+	
+	  @OneToMany 
+	  private List<Passagem> passagens;
+	 
 
 	public Agencia() {
 	}
